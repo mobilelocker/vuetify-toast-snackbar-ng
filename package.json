@@ -53,5 +53,7 @@
   "directories": {
     "doc": "docs"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dompurify": "^2.4.5"
+  }
 }

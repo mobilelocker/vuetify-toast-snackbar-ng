@@ -26,7 +26,7 @@
       >
         {{ icon }}
       </v-icon>
-      <span v-html="message"></span>
+      <span v-html="cleanedMessage"></span>
       <slot></slot>
     </div>
 
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import DOMPurify from 'dompurify';
 export default {
   props: {
     x: {
@@ -119,6 +120,12 @@ export default {
   data: () => ({
     active: false
   }),
+
+  computed: {
+    cleanedMessage() {
+      return DOMPurify.sanitize(this.message);
+    }
+  },
 
   mounted() {
     this.$nextTick(() => this.show())
